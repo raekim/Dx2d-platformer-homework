@@ -80,7 +80,6 @@ MainGame::MainGame()
 		Ground* ground;
 		Sprite* sprite;
 
-
 		// moving ground
 		movGround = new MovingGround;
 		sprite = new Sprite(L"bg-ground-grass-left", 1, 1, 0);
@@ -323,7 +322,7 @@ void MainGame::Init()
 	}
 
 	
-	movGround->m_vBasePosition = { WINSIZEX + 476,444 };
+	movGround->m_vBasePosition = { WINSIZEX + 200 ,444 };
 	movGround->Init();
 	
 	m_pPlayer->Init();
@@ -358,15 +357,14 @@ void MainGame::Update()
 		this->Release();
 		this->Init();
 	}
+	m_pPlayer->Update(m_pGround);
 
 	for (auto& g : m_pGround)
 	{
 		g->Update();
 	}
 
-	m_pPlayer->Update(m_pGround);
-
-	//movGround->Update(m_pPlayer);
+	movGround->Update(m_pPlayer);
 
 	for (auto& bg : backgrounds)
 	{
@@ -433,7 +431,7 @@ void MainGame::Render()
 		g->Render();
 	}
 
-	//movGround->Render();
+	movGround->Render();
 
 	for (auto& m : monsters)
 	{

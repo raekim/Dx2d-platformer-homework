@@ -18,7 +18,7 @@ public:
 	TextureManager();
 	~TextureManager();
 
-	void AddTexture(wstring key, wstring file, wstring path = L"../../_Images/");
+	void AddTexture(wstring key, wstring file, wstring path = L"../../_Images/kim-rae-hyang/");
 	const Texture* GetTexture(wstring key);
 };
 
