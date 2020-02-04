@@ -15,6 +15,7 @@ Ground::~Ground()
 
 void Ground::Init()
 {
+	m_vBasePosition = initBasePosition;
 	moveDelta = 0;
 	for (int i = 0; i < m_vSprites.size(); ++i)
 	{

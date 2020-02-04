@@ -87,7 +87,7 @@ MainGame::MainGame()
 		sprite = new Sprite(L"bg-ground-grass-right", 1, 1, 0);
 		ground->m_vSprites.push_back(sprite);
 		ground->collider = new BoxCollider;
-		ground->m_vBasePosition = { WINSIZEX*0.5f,WINSIZEY*0.5f };
+		ground->initBasePosition = { WINSIZEX*0.5f,WINSIZEY*0.5f };
 		m_pGround.push_back(ground);
 
 		ground = new Ground;
@@ -101,7 +101,7 @@ MainGame::MainGame()
 		sprite = new Sprite(L"bg-ground-grass-right", 1, 1, 0);
 		ground->m_vSprites.push_back(sprite);
 		ground->collider = new BoxCollider;
-		ground->m_vBasePosition = { 0, 195 };
+		ground->initBasePosition = { 0, 195 };
 		m_pGround.push_back(ground);
 
 		ground = new Ground;
@@ -115,7 +115,7 @@ MainGame::MainGame()
 		sprite = new Sprite(L"bg-ground-grass-right", 1, 1, 0);
 		ground->m_vSprites.push_back(sprite);
 		ground->collider = new BoxCollider;
-		ground->m_vBasePosition = { 1042, 284 };
+		ground->initBasePosition = { 1042, 284 };
 		m_pGround.push_back(ground);
 
 		ground = new Ground;
@@ -124,7 +124,30 @@ MainGame::MainGame()
 		sprite = new Sprite(L"bg-ground-grass-right", 1, 1, 0);
 		ground->m_vSprites.push_back(sprite);
 		ground->collider = new BoxCollider;
-		ground->m_vBasePosition = { 1020, 520 };
+		ground->initBasePosition = { 1020, 520 };
+		m_pGround.push_back(ground);
+
+		ground = new Ground;
+		sprite = new Sprite(L"bg-ground-grass-left", 1, 1, 0);
+		ground->m_vSprites.push_back(sprite);
+		sprite = new Sprite(L"bg-ground-grass-right", 1, 1, 0);
+		ground->m_vSprites.push_back(sprite);
+		ground->collider = new BoxCollider;
+		ground->initBasePosition = { 880, 448 };
+		m_pGround.push_back(ground);
+
+		ground = new Ground;
+		sprite = new Sprite(L"bg-ground-grass-left", 1, 1, 0);
+		ground->m_vSprites.push_back(sprite);
+		for (int i = 0; i < 15; ++i)
+		{
+			sprite = new Sprite(L"bg-ground-grass-mid", 1, 1, 0);
+			ground->m_vSprites.push_back(sprite);
+		}
+		sprite = new Sprite(L"bg-ground-grass-right", 1, 1, 0);
+		ground->m_vSprites.push_back(sprite);
+		ground->collider = new BoxCollider;
+		ground->initBasePosition = { 2500, 50 };
 		m_pGround.push_back(ground);
 
 		// moving grounds
@@ -140,6 +163,7 @@ MainGame::MainGame()
 		ground->moving = true;
 		ground->minX = 1560 - 400;
 		ground->maxX = 1560 + 200;
+		ground->initBasePosition = { 1560 ,444 };
 		m_pGround.push_back(ground);
 	}
 
@@ -304,7 +328,6 @@ void MainGame::Init()
 		{
 			m_pGround[i]->Init();
 		}
-		m_pGround[4]->m_vBasePosition = { 1560 ,444 };
 	}
 	
 	// coins Init
@@ -317,16 +340,15 @@ void MainGame::Init()
 		coins[5]->pos = { 1010,630 };
 		coins[6]->pos = { 1060,630 };
 
-		coins[7]->pos = {1042 + 495,444 };
-		coins[8]->pos = {1042 + 595,430 };
-		coins[9]->pos = {1042 + 695,444 };
-		coins[10]->pos = {1042 + 795,430 };
+		coins[7]->pos = {1042 + 495,644 };
+		coins[8]->pos = {1042 + 595,630 };
+		coins[9]->pos = {1042 + 695,644 };
+		coins[10]->pos = {1042 + 795,630 };
 		for (auto& c : coins)
 		{
 			c->Init();
 		}
 	}
-	
 	
 	m_pPlayer->Init();
 

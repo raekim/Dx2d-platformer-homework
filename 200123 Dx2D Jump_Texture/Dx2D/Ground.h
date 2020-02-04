@@ -15,6 +15,7 @@ public:
 	vector<Sprite*> m_vSprites;
 	D3DXVECTOR2	m_vBasePosition;
 	D3DXVECTOR2	m_vCenterPosition;
+	D3DXVECTOR2	initBasePosition;
 public:
 	Ground();
 	~Ground();

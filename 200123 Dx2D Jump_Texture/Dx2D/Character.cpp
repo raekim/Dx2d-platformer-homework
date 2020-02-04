@@ -20,7 +20,8 @@ void Character::Init()
 	whileHit = false;
 	hitTime = 0;
 
-	m_vPosition = { 110,300 };
+	//m_vPosition = { 110,300 };
+	m_vPosition = { 1000, 284 };
 	m_animation->SetPosition(m_vPosition);
 	m_animation->SetScale(0.5f, 0.5f);
 	m_animation->SetAniSpeed(1.0f);
@@ -353,16 +354,6 @@ void Character::Update(vector<Ground*>& grounds)
 			m_aniState = AniState::Idle;
 			m_animation->Play(m_aniState);
 		}
-		//m_vPosition.y -= GRAVITY * g_pTimeManager->GetDeltaTime();
-		//for (auto& g : grounds)
-		//{
-		//	if (AABB2D(m_collider->myRect, g->collider->myRect) && m_collider->myRect->GetTop() >= g->collider->myRect->GetTop())
-		//	{
-		//		// 발 밑에 있는 발판 위에 서기
-		//		if(PointInRect(g->collider->myRect->GetPosition(), g->collider->myRect->GetSize(), m_vPosition + D3DXVECTOR2(0, -(m_collider->myRect->GetSize().y*0.5f))))
-		//			m_vPosition.y = g->collider->myRect->GetTop() + m_collider->myRect->GetSize().y*0.5f;
-		//	}
-		//}
 	}
 	break;
 	}
@@ -395,12 +386,13 @@ void Character::Update(vector<Ground*>& grounds)
 			m_vPosition.x = 300;
 			g_cameraPos.x = max(g_cameraPos.x, 0);
 		}
-		if (m_vPosition.x > 900)
+		if (m_vPosition.x > 900)	// 화면에서 900 이상으로 움직이면 카메라 오른쪽 움직임
 		{
 			g_cameraPos.x += m_vPosition.x - 900.0f;
-			if (g_cameraPos.x > 760)
+			if (g_cameraPos.x > MAP_LENGTH - WINSIZEX)
 			{
-				g_cameraPos.x = 760;
+				// 맵의 끝에 도달
+				g_cameraPos.x = MAP_LENGTH - WINSIZEX;
 				m_vPosition.x = min(m_vPosition.x, WINSIZEX);
 			}
 			else
@@ -409,7 +401,6 @@ void Character::Update(vector<Ground*>& grounds)
 			}
 		}
 		m_vPosition.x = max(0, m_vPosition.x);
-		
 	}
 
 	// Update animation & collider
