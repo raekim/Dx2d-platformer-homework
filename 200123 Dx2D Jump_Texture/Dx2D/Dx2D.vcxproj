@@ -171,7 +171,6 @@
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Monster.h" />
-    <ClInclude Include="MovingGround.h" />
     <ClInclude Include="Primitive2DObejct.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
@@ -202,7 +201,6 @@
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Monster.cpp" />
-    <ClCompile Include="MovingGround.cpp" />
     <ClCompile Include="Primitive2DObejct.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>

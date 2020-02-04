@@ -120,9 +120,6 @@
     <ClInclude Include="Monster.h">
       <Filter>Dx2D Framework\4. MyObjects</Filter>
     </ClInclude>
-    <ClInclude Include="MovingGround.h">
-      <Filter>Dx2D Framework\4. MyObjects</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainGame.cpp">
@@ -183,9 +180,6 @@
       <Filter>Dx2D Framework\4. MyObjects</Filter>
     </ClCompile>
     <ClCompile Include="Monster.cpp">
-      <Filter>Dx2D Framework\4. MyObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="MovingGround.cpp">
       <Filter>Dx2D Framework\4. MyObjects</Filter>
     </ClCompile>
   </ItemGroup>

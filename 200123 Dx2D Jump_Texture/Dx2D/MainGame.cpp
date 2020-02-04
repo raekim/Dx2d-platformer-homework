@@ -3,7 +3,6 @@
 #include "Character.h"
 #include "Ground.h"
 #include "BoxCollider.h"
-#include "MovingGround.h"
 
 /* 런 or 아케이드 게임
 맵 이동
@@ -80,17 +79,6 @@ MainGame::MainGame()
 		Ground* ground;
 		Sprite* sprite;
 
-		// moving ground
-		movGround = new MovingGround;
-		sprite = new Sprite(L"bg-ground-grass-left", 1, 1, 0);
-		movGround->m_vSprites.push_back(sprite);
-		sprite = new Sprite(L"bg-ground-grass-mid", 1, 1, 0);
-		movGround->m_vSprites.push_back(sprite);
-		sprite = new Sprite(L"bg-ground-grass-right", 1, 1, 0);
-		movGround->collider = new BoxCollider;
-		movGround->m_vBasePosition = { WINSIZEX + 476,444 };
-
-
 		ground = new Ground;
 		sprite = new Sprite(L"bg-ground-grass-left", 1, 1, 0);
 		ground->m_vSprites.push_back(sprite);
@@ -133,11 +121,25 @@ MainGame::MainGame()
 		ground = new Ground;
 		sprite = new Sprite(L"bg-ground-grass-left", 1, 1, 0);
 		ground->m_vSprites.push_back(sprite);
-
 		sprite = new Sprite(L"bg-ground-grass-right", 1, 1, 0);
 		ground->m_vSprites.push_back(sprite);
 		ground->collider = new BoxCollider;
 		ground->m_vBasePosition = { 1020, 520 };
+		m_pGround.push_back(ground);
+
+		// moving grounds
+		ground = new Ground;
+		sprite = new Sprite(L"bg-ground-grass-left", 1, 1, 0);
+		ground->m_vSprites.push_back(sprite);
+		sprite = new Sprite(L"bg-ground-grass-mid", 1, 1, 0);
+		ground->m_vSprites.push_back(sprite);
+		sprite = new Sprite(L"bg-ground-grass-right", 1, 1, 0);
+		ground->m_vSprites.push_back(sprite);
+		ground->collider = new BoxCollider;
+		ground->moveSpeed = 130;
+		ground->moving = true;
+		ground->minX = 1560 - 400;
+		ground->maxX = 1560 + 200;
 		m_pGround.push_back(ground);
 	}
 
@@ -296,11 +298,15 @@ void MainGame::Init()
 	m_hp = 3;
 	g_cameraPos = { 0,0 };
 
-	for (int i = 0; i < m_pGround.size(); ++i)
+	// init grounds
 	{
-		m_pGround[i]->Init();
+		for (int i = 0; i < m_pGround.size(); ++i)
+		{
+			m_pGround[i]->Init();
+		}
+		m_pGround[4]->m_vBasePosition = { 1560 ,444 };
 	}
-
+	
 	// coins Init
 	{
 		coins[0]->pos = { 1010,580 };
@@ -320,10 +326,7 @@ void MainGame::Init()
 			c->Init();
 		}
 	}
-
 	
-	movGround->m_vBasePosition = { WINSIZEX + 200 ,444 };
-	movGround->Init();
 	
 	m_pPlayer->Init();
 
@@ -361,10 +364,8 @@ void MainGame::Update()
 
 	for (auto& g : m_pGround)
 	{
-		g->Update();
+		g->Update(m_pPlayer);
 	}
-
-	movGround->Update(m_pPlayer);
 
 	for (auto& bg : backgrounds)
 	{
@@ -430,8 +431,6 @@ void MainGame::Render()
 	{
 		g->Render();
 	}
-
-	movGround->Render();
 
 	for (auto& m : monsters)
 	{
