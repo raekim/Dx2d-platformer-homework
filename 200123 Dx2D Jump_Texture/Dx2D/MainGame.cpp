@@ -201,14 +201,21 @@ MainGame::MainGame()
 
 	// map load (background)
 	{
-		g_pTextureManager->AddTexture(L"bg-forest1", L"bg/forest1.png");
+		g_pTextureManager->AddTexture(L"bg-forest", L"bg/forest1.png");
 		background* bg;
-		bg = new background;
-		bg->m_Sprite = new Sprite(L"bg-forest1", 1, 1, 0);
-		bg->m_Sprite->SetSize( 2,2 );
-		bg->camRatio = 0.5f;
-		bg->pos = { WINSIZEX*0.5f, WINSIZEY*0.5f };
 
+		bg = new background;
+		bg->m_Sprite = new Sprite(L"bg-forest", 1, 1, 0);
+		bg->m_Sprite->SetSize(2, 2);
+		bg->camRatio = 0.5f;
+		bg->pos = { bg->m_Sprite->GetWidth()*0.5f*2, WINSIZEY*0.5f };
+		backgrounds.push_back(bg);
+
+		bg = new background;
+		bg->m_Sprite = new Sprite(L"bg-forest", 1, 1, 0);
+		bg->m_Sprite->SetSize(2, 2);
+		bg->camRatio = 0.5f;
+		bg->pos = { bg->m_Sprite->GetWidth()*0.5f * 2*3 - 5, WINSIZEY*0.5f };
 		backgrounds.push_back(bg);
 	}
 

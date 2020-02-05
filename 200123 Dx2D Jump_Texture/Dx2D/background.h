@@ -2,6 +2,7 @@
 class background : public iGameNode
 {
 public:
+	float offset;
 	D3DXVECTOR2 pos;
 	float camRatio;
 	Sprite* m_Sprite;

@@ -18,7 +18,7 @@ void background::Init()
 
 void background::Update()
 {
-	m_Sprite->SetPosition({ pos.x - g_cameraPos.x * camRatio, pos.y });
+	m_Sprite->SetPosition({ pos.x - g_cameraPos.x * camRatio + offset, pos.y });
 	m_Sprite->Update();
 }
 
