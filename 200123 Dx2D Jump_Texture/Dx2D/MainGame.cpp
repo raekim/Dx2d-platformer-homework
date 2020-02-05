@@ -147,7 +147,7 @@ MainGame::MainGame()
 		sprite = new Sprite(L"bg-ground-grass-right", 1, 1, 0);
 		ground->m_vSprites.push_back(sprite);
 		ground->collider = new BoxCollider;
-		ground->initBasePosition = { 2500, 50 };
+		ground->initBasePosition = { 2155 + 820, 150 };
 		m_pGround.push_back(ground);
 
 		// moving grounds
@@ -164,6 +164,25 @@ MainGame::MainGame()
 		ground->minX = 1560 - 400;
 		ground->maxX = 1560 + 200;
 		ground->initBasePosition = { 1560 ,444 };
+		m_pGround.push_back(ground);
+
+		// moving grounds
+		ground = new Ground;
+		sprite = new Sprite(L"bg-ground-grass-left", 1, 1, 0);
+		ground->m_vSprites.push_back(sprite);
+		for (int i = 0; i < 2; ++i)
+		{
+			sprite = new Sprite(L"bg-ground-grass-mid", 1, 1, 0);
+			ground->m_vSprites.push_back(sprite);
+		}
+		sprite = new Sprite(L"bg-ground-grass-right", 1, 1, 0);
+		ground->m_vSprites.push_back(sprite);
+		ground->collider = new BoxCollider;
+		ground->moveSpeed = 130;
+		ground->moving = true;
+		ground->minX = 2000;
+		ground->maxX = 2155 + 500;
+		ground->initBasePosition = { 2155,150 };
 		m_pGround.push_back(ground);
 	}
 
