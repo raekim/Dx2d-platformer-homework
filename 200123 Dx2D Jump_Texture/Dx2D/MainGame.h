@@ -2,6 +2,7 @@
 #include "background.h"
 #include "Coin.h"
 #include "Monster.h"
+#include "Minimap.h"
 
 class MovingGround;
 class Character;
@@ -28,6 +29,7 @@ private:
 	bool gameStarted;	// 맨 처음 게임 시작(타이틀화면)
 	float initTimeScale;
 	// 게임 오브젝트들
+	Minimap* m_pMiniMap;
 	Character* m_pPlayer;	// 플레이어 캐릭터
 	vector<Ground*> m_pGround;	// 배경의 platform 땅
 	vector<background*> backgrounds;

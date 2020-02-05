@@ -120,6 +120,9 @@
     <ClInclude Include="Monster.h">
       <Filter>Dx2D Framework\4. MyObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Minimap.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainGame.cpp">
@@ -181,6 +184,9 @@
     </ClCompile>
     <ClCompile Include="Monster.cpp">
       <Filter>Dx2D Framework\4. MyObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Minimap.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

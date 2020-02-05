@@ -267,6 +267,11 @@ MainGame::MainGame()
 		titleUI->Init();
 		titleUI->SetPosition(WINSIZEX*0.5f, WINSIZEY*0.5f);
 		titleUI->Update();
+
+		// minimap
+		m_pMiniMap = new Minimap;
+		m_pMiniMap->m_shrinkFactor = 0.08f;
+		m_pMiniMap->m_pos = { MAP_LENGTH*m_pMiniMap->m_shrinkFactor*0.5f + 20, WINSIZEY - 150 };
 	}
 	g_pTimeManager->SetTimeScale(0);
 	gameStarted = false;
@@ -391,6 +396,8 @@ void MainGame::Init()
 			m->Init();
 		}
 	}
+
+	m_pMiniMap->Init();
 }
 
 void MainGame::Update()
@@ -458,6 +465,9 @@ void MainGame::Update()
 	{
 		m->Update();
 	}
+
+	// 미니맵 업데이트
+	m_pMiniMap->Update(m_pPlayer->m_vPosition);
 }
 
 void MainGame::Render()
@@ -469,7 +479,6 @@ void MainGame::Render()
 	DeviceContext->OMSetBlendState(m_pAlphaBlendState, NULL, 0xFF);	// 반투명 사용 설정
 
 	// Render
-	
 	for (auto& bg : backgrounds)
 	{
 		bg->Render();
@@ -508,6 +517,9 @@ void MainGame::Render()
 			heartUI->Update();
 			heartUI->Render();
 		}
+
+		// 미니맵 렌더
+		m_pMiniMap->Render();
 
 		if (gameOver)
 		{
