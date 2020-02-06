@@ -397,7 +397,7 @@ void MainGame::Init()
 		}
 	}
 
-	m_pMiniMap->Init();
+	m_pMiniMap->Init(m_pGround.size());
 }
 
 void MainGame::Update()
@@ -467,7 +467,7 @@ void MainGame::Update()
 	}
 
 	// 미니맵 업데이트
-	m_pMiniMap->Update(m_pPlayer->m_vPosition);
+	m_pMiniMap->Update(m_pPlayer->m_vPosition, m_pGround);
 }
 
 void MainGame::Render()

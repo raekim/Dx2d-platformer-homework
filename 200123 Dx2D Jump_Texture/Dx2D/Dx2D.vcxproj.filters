@@ -121,7 +121,7 @@
       <Filter>Dx2D Framework\4. MyObjects</Filter>
     </ClInclude>
     <ClInclude Include="Minimap.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Dx2D Framework\4. MyObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -186,7 +186,7 @@
       <Filter>Dx2D Framework\4. MyObjects</Filter>
     </ClCompile>
     <ClCompile Include="Minimap.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Dx2D Framework\4. MyObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

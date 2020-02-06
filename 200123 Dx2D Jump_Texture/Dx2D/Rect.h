@@ -23,4 +23,5 @@ public:
 	float GetLeft() { return GetPosition().x - GetSize().x*0.5f; }
 	float GetTop() { return GetPosition().y + GetSize().y*0.5f; }
 	float GetBottom() { return GetPosition().y - GetSize().y*0.5f; }
+
 };
